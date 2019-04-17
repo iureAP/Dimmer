@@ -1,51 +1,50 @@
-#include "dimmer.hpp"
+#include <dimmer.hpp>
 
-Dimmer::Dimmer(PinName blue_led_pin, PinName red_led_pin, PinName yellow_led_pin)
-    :blue_led(blue_led_pin),
-     red_led(red_led_pin),
-     yellow_led(yellow_led_pin{
-     increment = 0;
-     
-     }
+Dimmer::Dimmer(PinName blue_led_pin, PinName red_led_pin)
+    : blue_led(blue_led_pin)
+    , red_led(red_led_pin) 
+    /*, increment(5)*/ {}
 
-
-void turnOnBlueLed(){
+void Dimmer::turnOnBlueLed(){
     blue_led.write(1);
 }
 
-void turOnRedLed(){
+void Dimmer::turnOnRedLed(){
     red_led.write(1);
 }
 
-void turnOffBlueLed(){
+void Dimmer::turnOffBlueLed(){
     blue_led.write(0);
 }
 
-void turnOffRedLed(){
+void Dimmer::turnOffRedLed(){
     red_led.write(0);
 }
 
-void turnOffYellowLed(){
-    yellow_led.write(0)
+void Dimmer::turnOffAllLeds(){
+    blue_led.write(0);
+    red_led.write(0);
 }
 
-float incrementLight(){
-    increment = increment + 0.0005;
-    return increment;
+/*void Dimmer::incrementLuminosity(){
+    increment = increment + 0.5;
 }
 
-void changeLed{
+void Dimmer::decrementLuminosity(){
+    increment = increment - 0.5;
+}*/
+void Dimmer::changeLed(){
     if(blue_led){
         blue_led.write(0);
         red_led.write(1);
     }
     else{
         blue_led.write(1);
-        red_led(0);
+        red_led.write(0);
     }       
 }
 
-int Dimer::whatIsLedOn(){
+int Dimmer::whatIsLedOn(){
     if(blue_led.read())
         return BLUE_LED_ON;    
     else{

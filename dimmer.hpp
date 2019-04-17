@@ -1,5 +1,6 @@
 #ifndef DIMMER_HPP
 #define DIMMER_HPP
+#include <mbed.h>
 
 enum led_state{
     BLUE_LED_ON,
@@ -9,19 +10,24 @@ enum led_state{
 
 class Dimmer{
  public:
-    Dimmer(PinName blue_led_pin, PinName red_led_pin, PinName yellow_led_pin);
+    Dimmer(PinName blue_led_pin, PinName red_led_pin);
     void turnOnBlueLed();
     void turnOnRedLed();
-    void turnONYellowLed();
-    void turnOffBluLed();
+    void turnOnYellowLed();
+    void turnOffBlueLed();
     void turnOffRedLed();
     void turnOffYellowLed();
     void turnOffAllLeds();    
-    float increementLight();
+    void incrementLuminosity();
+    void decrementLuminosity();
     led_state led_on; 
-    int increment;
     void changeLed();
+    int whatIsLedOn();
     
+    DigitalOut blue_led;
+    DigitalOut red_led;
+    //float increment;
+    //DigitalOut yellow_led;    
 };
 
 
